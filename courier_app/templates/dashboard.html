@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/ship-form.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/dashboard.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static '/favicon_io/site.webmanifest' %}">
+    <title>LoftyHeights Shipments | Dashboard</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'createshipping' %}">Create Shipment</a></li>
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="dashboard-hero">
+      <div class="hero-text">
+        <h1>Dashboard</h1>
+      </div>
+    </section>
+
+    <section class="document-container">
+        <div class="upload-card">
+            <h2 class="upload-card-title">Shipment Status</h2>
+    
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-item__label">Total Shipments Upload</span>
+                    <span class="status-item__value">{{ total_orders }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="order-details-container">
+      <h1>Order History</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Tracking Number</th>
+      <th>Name of Shipper</th>
+      <th>Receiver's Name</th>
+      <th>Product</th>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Weight (KG)</th>
+      <th>Length (CM)</th>
+      <th>Height (CM)</th>
+      <th>Width (CM)</th>
+      <th>Departure Time</th>
+      <th>Departure Date</th>
+      <th>Pickup Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order_history in order_historys %} 
+    <tr>
+      <td>{{ order_history.tracking_number }}</td>
+      <td>{{ order_history.name_of_shipper }}</td>
+      <td>{{ order_history.Recievers_name }}</td>
+      <td>{{ order_history.product }}</td>
+      <td>{{ order_history.Origin }}</td>
+      <td>{{ order_history.Destination }}</td>
+      <td>{{ order_history.weight_in_kg }}</td>
+      <td>{{ order_history.length_in_cm }}</td>
+      <td>{{ order_history.height_in_cm }}</td>
+      <td>{{ order_history.width_in_cm }}</td>
+      <td>{{ order_history.Departure_time }}</td>
+      <td>{{ order_history.departure_date }}</td>
+      <td>{{ order_history.pickup_date }}</td>
+      <td>{{ order_history.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  </div>
+
+  <!-- <section class="profile-section"> -->
+    <!-- <h2 style="text-align: center;">Profile Details</h2>
+    <div class="profile-header">
+        <div class="profile-info">
+            <h2>John Doe</h2>
+            <p>Courier ID: #12345</p>
+        </div>
+    </div>
+
+    <div class="profile-details">
+        <div class="profile-detail-item">
+            <label>Email:</label>
+            <span>john.doe@email.com</span>
+        </div>
+        <div class="profile-detail-item">
+            <label>Phone Number:</label>
+            <span>+1 (123) 456-7890</span>
+        </div>
+        <div class="profile-detail-item">
+            <label>Address:</label>
+            <span>123 Main Street, City, State</span>
+        </div>
+        </div> -->
+
+    <!-- <button class="edit-profile-btn">Edit Profile</button> -->
+<!-- </section> -->
+
+ <!-- FOOTER -->
+ <footer>
+  <div class="footer-container">
+    <div class="copyright">
+      <p>&copy; <span id="currentYear"></span>LoftyHeights Shipments</p>
+    </div>
+  </div>
+</footer>
+
+    <!-- <script src="{%static 'assets/js/contact.js' %}"></script> -->
+    <script>
+      const navbar = document.querySelector(".navbar"); // For sticky behavior
+
+      // Navigation bar sticky behavior
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+
+      // MENU HAMBURGER
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        document.querySelector(".nav-links").classList.toggle("open");
+      });
+    </script>
+    <script src="{%static 'assets/js/dashboard.js' %}"></script>
+  </body>
+</html>

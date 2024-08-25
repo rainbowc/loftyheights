@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/contact.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static '/favicon_io/site.webmanifest' %}">
+    <title>LoftyHeights Shipments</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Courier</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="contact-hero">
+      <div class="hero-text">
+        <p class="hero-light-text">GET TO KNOW US</p>
+        <h1>Contact Us</h1>
+      </div>
+    </section>
+
+    <section class="contact-info-section">
+      <div class="contact-us-container">
+        <div class="info-row">
+          <div class="info-column yellow-bg">
+            <i class="fas fa-building fa-2x"></i>
+            <h2>Contact Us; support@loftyheightsshipments.site</h2>
+            <div class="line-divider"></div>
+            <p>
+              Still got questions?
+              Reach out to our experts!       
+            </p>
+            <p>Working hours 08:00 - 22:00</p>
+          </div>
+
+          <div class="info-column white-bg">
+            <i class="fas fa-building fa-2x"></i>
+            <h2>Contact Us: support@loftyheightsshipments.site</h2>
+            <div class="line-divider"></div>
+            <p>
+              Write to us at  for customer support
+            </p>
+            <p>Working hours 08:00 - 22:00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <form action="" id="contact-form" class="contact-form">
+        <h2>Get a Free Quote</h2>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div class="form-group col">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group col">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" />
+          </div>
+          <div class="form-group col">
+            <label for="budget">Budget:</label>
+            <input type="number" id="budget" name="budget" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea id="comment" name="comment"></textarea>
+        </div>
+
+        <button type="submit">SEE PRICES NOW</button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <section class="section-1">
+            <h2>LoftyHeights Shipments</h2>
+            
+          </section>
+
+          <section class="section-2">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+              <li><a href="{% url 'aboutus' %}">About</a></li>
+              <li><a href="{% url 'signin' %}">Login</a></li>
+            </ul>
+          </section>
+
+          <section class="section-3">
+            <h4>Get in Touch</h4>
+            <p><a href="mailto:company@email.com">support@loftyheightsshipments.site</a></p>
+          </section>
+        </div>
+
+        <hr class="divider" />
+        <div class="copyright">
+          <p>&copy; <span id="currentYear"></span> LoftyHeights Shipments</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{%static 'assets/js/contact.js' %}"></script>
+    <script>
+      const navbar = document.querySelector(".navbar"); // For sticky behavior
+
+      // Navigation bar sticky behavior
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+
+      // MENU HAMBURGER
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        document.querySelector(".nav-links").classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+.contact-hero {
+  background-image: url("../images/title-parallax-3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 450px;
+  position: relative;
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.hero-light-text {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+}
+
+/*  */
+.info-row {
+  display: flex;
+  align-items: center; /* Vertically center content within columns */
+}
+
+.info-column {
+  width: 50%;
+  padding: 40px;
+  text-align: center;
+}
+
+.yellow-bg {
+  background-color: #ffdc39;
+  color: black;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.info-column i {
+  margin-bottom: 20px;
+}
+
+.line-divider {
+  width: 60px;
+  height: 2px;
+  background-color: black;
+  margin: 20px auto;
+}
+@media (max-width: 768px) {
+  .info-row {
+    flex-direction: column;
+  }
+  /* Change breakpoint if needed */
+  .info-column {
+    width: 100%; /* Make columns take full width */
+    margin-bottom: 30px; /* Add spacing between columns */
+  }
+}
+
+/* FORM SECTION */
+
+.contact-form {
+  background-image: url("../images/contact-us-background-1.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 20rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#contact-form h2 {
+  text-align: center;
+}
+
+/* Form rows for grid-like layout */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form-row .col {
+  flex: 1; /* Distribute column widths equally */
+  margin-right: 20px; /* Spacing between columns */
+}
+
+.form-row .col:last-child {
+  margin-right: 0; /* No margin on last column of each row */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  height: 3rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.form-group textarea {
+  min-height: 7rem;
+}
+
+button[type="submit"] {
+  /* Target only submit button */
+  display: block;
+  width: 200px; /* You can adjust the width  */
+  margin: 20px auto; /* Centers the button */
+  background-color: var(--yellow-text-color);
+  color: black;
+  font-weight: 800;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 5rem 2rem;
+  }
+  .form-row {
+    width: 100%;
+    flex-direction: column; /* Stack row items vertically */
+  }
+
+  .form-row .col {
+    width: 100%;
+    margin-right: 0; /* No space between columns on mobile */
+    margin-bottom: 10px; /* Spacing between items */
+  }
+}

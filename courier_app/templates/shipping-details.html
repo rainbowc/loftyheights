@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/shipping-details.css' %}" />
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Add Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static './favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static './favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static './favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static './favicon_io/site.webmanifest' %}">
+
+    <title>LoftyHeights Shipments | Shipping Details</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="shipping-hero">
+      <div class="hero-text">
+        <p class="hero-light-text">Your Shipping Details</p>
+        <h1>Shipping Details</h1>
+      </div>
+      
+    </section>
+    {% if results %}
+    {% for result in results %} 
+    <table>
+        <thead>
+            <tr>
+                <th>Tracking Info</th>
+                <th>Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tracking Number</td>
+                <td>{{result.tracking_number}}</td>
+            </tr>
+            <tr>
+                <td>Name of Shipper</td>
+                <td>{{result.name_of_shipper}}</td>
+            </tr>
+            <tr>
+                <td>Receiver's Name</td>
+                <td>{{result.Recievers_name}}</td>
+            </tr>
+            <tr>
+                <td>Product</td>
+                <td>{{result.product}}</td>
+            </tr>
+            <tr>
+                <td>Origin</td>
+                <td>{{result.Origin}}</td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td>{{result.Destination}}</td>
+            </tr>
+            <tr>
+                <td>Weight (KG)</td>
+                <td>{{result.weight_in_kg}}</td>
+            </tr>
+            <tr>
+                <td>Length (CM)</td>
+                <td>{{result.length_in_cm}}</td>
+            </tr>
+            <tr>
+                <td>Height (CM)</td>
+                <td>{{result.height_in_cm}}</td>
+            </tr>
+            <tr>
+                <td>Width (CM)</td>
+                <td>{{result.width_in_cm}}</td>
+            </tr>
+            <tr>
+                <td>Departure Time</td>
+                <td>{{result.Departure_time}}</td>
+            </tr>
+            <tr>
+                <td>Departure Date</td>
+                <td>{{result.departure_date}}</td>
+            </tr>
+            <tr>
+              <td>Pickup Date</td>
+              <td>{{result.pickup_date}}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>{{result.status}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <h4 style="text-align: center; padding: 20px;">Package Current Location</h4>
+    <div  id="map" style="height: 400px; margin-bottom: 20px;"></div>
+    
+        <script>
+          // Get latitude and longitude from Django context
+          var latitude = "{{ result.lattitude }}";
+          var longitude = "{{ result.longitude }}";
+
+          // Initialize map with dynamic coordinates
+          var map = L.map('map').setView([latitude, longitude], 13);
+
+          // Add OpenStreetMap tiles
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+
+          // Add marker at the dynamic coordinates
+          L.marker([latitude, longitude]).addTo(map)
+              .bindPopup('Current Package Location')
+              .openPopup();
+        </script>
+
+
+    {% endfor %}
+        {% else %}
+
+        <div class="error-message" style="height: 100px; padding: 10px; ">
+          <h5 style="font-size: 18px; font-weight: bold; text-align: center;">Hey! Couldn't find a package for you. Please input a correct Tracking ID. <a style="text-decoration: none;" href="{% url 'home' %}">Click here to Go back</a></h5>
+      </div>
+
+        {% endif %}
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <section class="section-1">
+            <h2>LoftyHeights Shipments</h2>
+          </section>
+
+          <section class="section-2">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+              <li><a href="{% url 'aboutus' %}">About</a></li>
+              <li><a href="{% url 'signin' %}">Login</a></li>
+              <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+          </section>
+
+          <section class="section-3">
+            
+          </section>
+        </div>
+
+        <hr class="divider" />
+        <div class="copyright">
+          <p>&copy; <span id="currentYear"></span>LoftyHeights Shipments</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{%static 'assets/js/contact.js' %}"></script>
+    <script>
+      const navbar = document.querySelector(".navbar"); // For sticky behavior
+
+      // Navigation bar sticky behavior
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+
+      // MENU HAMBURGER
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        document.querySelector(".nav-links").classList.toggle("open");
+      });
+    </script>
+   
+  
+  </body>
+</html>

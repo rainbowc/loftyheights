@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/register.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static './favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static './favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static './favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static './favicon_io/site.webmanifest' %}">
+    <title>Register | LoftyHeights Shipments</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="login-hero">
+      <div class="hero-text">
+        <form id="login-form" action="{% url 'register' %}" method="POST">
+          {% csrf_token %}
+        <p class="hero-light-text">Sign up with us as a member.</p>
+
+        <div class="input-group">
+          <label for="{{ form.username.id_for_label }}">Username:</label>
+          {{ form.username }}
+      </div>
+  
+      <div class="input-group">
+          <label for="{{ form.password1.id_for_label }}">Password:</label>
+          {{ form.password1 }}
+      </div>
+  
+      <div class="input-group">
+          <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+          {{ form.password2 }}
+      </div>
+      <div class="input-group">
+        <button type="submit" id="login-button">Register</button>
+      </div>
+        </form>
+
+        <p class="info-text">
+          <span>Already have an account? </span>
+          <a href="{% url 'signin' %}">Login</a>
+        </p>
+      </div>
+    </section>
+
+  </body>
+</html>

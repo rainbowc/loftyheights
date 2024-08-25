@@ -1,0 +1,74 @@
+.shipping-hero {
+  background-image: url("../images/delivery-concept-portrait-happy-african-american-delivery-man-red-cloth-holding-box-package-isolated-grey-studio-background-copy-space.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 450px;
+  position: relative;
+  
+}
+
+.shipping-hero::before {
+  
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.hero-light-text {
+  text-align: center;
+  color: black;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 1.3rem;
+  }
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    text-align: left;
+    width: 60%;
+    margin: 1rem auto;
+    border-radius: 5px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+
+tr:nth-child(even) { background-color: #f2f2f2; }
+
+th {
+    background-color: #ffdc39;
+    color: white;
+}
+td {
+    border-right: 1px solid #ddd; 
+ }
+ @media (max-width: 768px) {
+    table {
+        width: 90%;
+    }
+  }

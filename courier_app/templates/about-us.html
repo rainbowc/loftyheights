@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets//css/about.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static '/favicon_io/site.webmanifest' %}">
+    <title>LoftyHeights Shipments</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="#{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="about-hero">
+      <div class="hero-text">
+        <p class="hero-light-text">GET TO KNOW US</p>
+        <h1>About Us</h1>
+      </div>
+    </section>
+
+    <!-- service cards -->
+
+    <section class="about-services-section">
+      <div class="about-services-container">
+        <div class="about-services-cards">
+          <div class="about-services-card">
+            <img src="{%static 'assets/images/about-us-img1.jpg' %}" alt="Service 1" />
+            <div class="about-card-content">
+              <div class="icon-container">
+                <i class="fas fa-truck fa-2x"></i>
+              </div>
+              <div class="about-services-text-content">
+                <h3>Shipping Services</h3>
+                <p>Tech-enabled pick-up and delivery services. Supported by 150+ gateways, hubs and fulfillment centers across 2,700+ cities</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-services-card">
+            <img src="{%static 'assets/images/about-us-img2.jpg' %}" alt="Service 1" />
+            <div class="about-card-content">
+              <div class="icon-container">
+                <i class="fas fa-truck fa-2x"></i>
+              </div>
+              <div class="about-services-text-content">
+                <h3>Fulfillment Services</h3>
+                <p>Tailor-made fulfillment and storage solutions for retail, D2C brands, grocery, e-commerce, consumer goods & consumer electronics</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-services-card">
+            <img src="{%static 'assets/images/about-us-img3.jpg' %}" alt="Service 1" />
+            <div class="about-card-content">
+              <div class="icon-container">
+                <i class="fas fa-truck fa-2x"></i>
+              </div>
+              <div class="about-services-text-content">
+                <h3>LoftyHeights Channel</h3>
+                <p>Connect all channels, SKUs and warehouses, and centralise your inventory.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-call-hero">
+      <div class="hero-text">
+        <i class="fa-solid fa-phone"></i>
+        <span class="underline">
+          <span class="call-text">Contact Us</span>
+          <span class="phoneNumber">support@loftyheightsshipments.site</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <section class="section-1">
+            <h2>LoftyHeights Shipments</h2>
+            
+          </section>
+
+          <section class="section-2">
+            <h4>Other Links</h4>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+              <li><a href="{% url 'aboutus' %}">About</a></li>
+              <li><a href="{% url 'signin' %}">Login</a></li>
+            </ul>
+          </section>
+
+          <section class="section-3">
+            <h4>Get in Touch</h4>
+            <p><a href="mailto:company@email.com">support@loftyheightsshipments.site</a></p>
+          </section>
+        </div>
+
+        <hr class="divider" />
+        <div class="copyright">
+          <p>&copy; <span id="currentYear"></span> LoftyHeights Shipments</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const navbar = document.querySelector(".navbar"); // For sticky behavior
+
+      // Navigation bar sticky behavior
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+
+      // MENU HAMBURGER
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        document.querySelector(".nav-links").classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

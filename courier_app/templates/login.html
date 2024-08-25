@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'assets/css/login.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static '/favicon_io/site.webmanifest' %}">
+    <title>LoftyHeights Shipments</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="login-hero">
+      <div class="hero-text">
+        <form id="login-form" action="" method="POST">
+          {%csrf_token%}
+        <p class="hero-light-text">Please enter your credentials to log in.</p>
+
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+            
+          </div>
+          <!-- <div class="input-group">
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember">Remember me</label>
+          </div> -->
+          <div class="input-group">
+            <button type="submit" id="login-button">Log In</button>
+          </div>
+        </form>
+
+        <p class="info-text">
+          <span>Don't have an account? </span>
+          <a href="{% url 'register' %}">Sign Up</a>
+        </p>
+      </div>
+    </section>
+
+  </body>
+</html>
+

@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoftyHeights Shipments</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{%static 'assets/css/style.css' %}" />
+     <!-- Favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon_io/apple-touch-icon.jpg' %}">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon_io/favicon-32x32.jpg' %}">
+     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon_io/favicon-16x16.jpg' %}">
+     <link rel="manifest" href="{% static '/favicon_io/site.webmanifest' %}">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">LoftyHeights Shipments</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+        <li><a href="{% url 'signin' %}">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+    </nav>
+    <!-- CAROUSEL SECTION -->
+    <div class="hero-section">
+      <div class="carousel">
+        <div class="slide active">
+          <img src="{%static 'assets/images/h2-slider-background-img.jpg' %}" alt="Slide 1" />
+          <div class="text-content">
+            <img
+              src="{%static 'assets/images/h2-slider-img-1.png' %}"
+              alt="move-box"
+              class="move-box"
+            />
+            <p class="light-text">START YOUR SHIPMENT WITH US</p>
+            <h2 class="underline">Need Help with your parcels?</h2>
+            <div class="button-container">
+              <a href="{% url 'contactus' %}" class="get-quote-btn">Get Quote</a>
+              <a href="{% url 'aboutus' %}" class="learn-more-btn">Learn More</a>
+            </div>
+            <form method = 'get' action="{% url 'shippingdetails' %}" class="track-form">
+              {% csrf_token %}
+              <div class="input-group">
+                  <input class="track-input" type="text" id="tracking-number" name="q" placeholder="Enter your tracking number" required>
+                  <button class="track-btn" type="submit">Track</button>
+              </div>
+            </form>
+           
+          </div>
+        </div>
+        <div class="slide">
+          <img src="{%static 'assets/images/h2-slide2-background-img.jpg' %}" alt="Slide 2" />
+          <div class="text-content slide-2">
+            <div class="image-container">
+              <img src="{%static 'assets/images/h2-slide2-img-1.png' %}" alt="drop-box" />
+            </div>
+            <div class="text-and-button">
+              <p class="light-text">ENABLERS FOR YOUR BUSINESS GROWTH</p>
+              <h2 class="underline">
+                Keeping Up with Your Business Promises Every Single Day
+              </h2>
+              <a href="{% url 'aboutus' %}" class="learn-more-btn">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="{%static 'assets/images/h2-slide3-background-img.jpg' %}" alt="Slide 2" />
+          <div class="text-content slide-3">
+            <div class="image-container">
+              <p>20%</p>
+            </div>
+            <div class="text-and-button">
+              <h2 class="underline">Discount now!</h2>
+            </div>
+          </div>
+        </div>
+        <!-- ARROW BTN SECTION -->
+        <button class="prev">
+          <i class="fa-solid fa-arrow-left-long"></i>
+        </button>
+        <button class="next">
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </button>
+        <div class="slide-indicator">
+          <span class="prev-indicator">1/3</span>
+          <span class="next-indicator">3/3</span>
+        </div>
+      </div>
+
+      <!-- CARD SECTION -->
+      <section class="card-section">
+        <div class="card-container">
+          <div class="card">
+            <img src="{%static 'assets/images/h2-img-1.jpg' %}" alt="Moving Family Image" />
+            <h3>Shipping Services</h3>
+            <div class="line-divider"></div>
+            <p>
+            Tech-enabled pick-up and delivery services. 
+            </p>
+            <a href="{% url 'aboutus' %}" class="card-button">Learn More</a>
+          </div>
+          <div class="card">
+            <img src="{%static 'assets/images/h2-img-2.jpg' %}" alt="Moving Family Image" />
+            <h3>Fulfillment Services</h3>
+            <div class="line-divider"></div>
+            <p>
+              Tailor-made fulfillment and storage solutions for retail
+            </p>
+            <a href="{% url 'aboutus' %}" class="card-button">Learn More</a>
+          </div>
+          <div class="card">
+            <img src="{%static 'assets/images/h2-img-3.jpg' %}" alt="Moving Family Image" />
+            <h3>LoftyHeights Channel</h3>
+            <div class="line-divider"></div>
+            <p>
+              Connect all channels, SKUs and warehouses
+            </p>
+            <a href="{% url 'aboutus' %}" class="card-button">Learn More</a>
+          </div>
+          <div class="card">
+            <img src="{%static 'assets/images/h2-img-1.jpg' %}" alt="Moving Family Image" />
+            <h3>Digital Services</h3>
+            <div class="line-divider"></div>
+            <p>
+              Fast and secure e-KYC and biometric services. 
+              
+            </p>
+            <a href="{% url 'aboutus' %}" class="card-button">Learn More</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="fleet-section">
+      <div class="fleet-container">
+        <div class="fleet-content-area">
+          <div class="fleet-carousel">
+            <div class="fleet-slide active">
+              <h2>Logistics services for all kinds of businesses!</h2>
+              <div class="line-divider"></div>
+              <p class="sub-text">
+                Local Same Day Delivery Specialists For Business Clients
+              </p>
+              <p class="description">
+                We provide a wide range of services for every set of e-commerce business – small or large, cost conscious, and time-sensitive
+              </p>
+            </div>
+            <!-- <div class="fleet-slide">
+              <h2>Just one item to send? Send it immediately!</h2>
+              <div class="line-divider"></div>
+              <p class="sub-text">
+                No more waiting in line with our Courier Services.
+              </p>
+              <p class="description">
+                An duo lorem altera gloriatur. No imperdiet adversarium pro. No
+                sit sumo lorem. Mei ea eius elitr consequuntur. In mel aeterno
+                facilis, viris mediocrem neglegentur cu eam. Et summo quaestio
+                qui, ubique corrumpit cum ut ludus.
+              </p>
+            </div>
+            <button class="fleet-prev">Prev</button>
+            <button class="fleet-next">Next</button> -->
+          </div>
+        </div>
+
+        <div class="fleet-image-area">
+          <img src="{%static 'assets/images/h2-img-5.jpg' %}" alt="Fleet Image" />
+        </div>
+      </div>
+      
+    </section>
+
+    <section class="services-section">
+      <div class="services-header">
+        <p     class="light-text">MOVING WITH US</p>
+        <h2 class="underline">Moving Services</h2>
+      </div>
+      <div class="services-card-container">
+        <div class="services-card">
+          <i class="fa-solid fa-truck"></i>
+          <h4>24 hrs Delivery</h4>
+          <div class="line-divider"></div>
+          <p>
+            We guarantee same day and next-day delivery within Australia and around the world within 72 hours.
+          </p>
+        </div>
+        <div class="services-card">
+          <i class="fa-solid fa-thumbs-up"></i>
+          <h4>
+            Reliable & Secure </h4>
+          <div class="line-divider"></div>
+          <p>
+            We treat your parcel with care due to our 100% successful parcel delivery target which ensures that items are never lost or stolen.
+          </p>
+        </div>
+        <div class="services-card">
+          <i class="fa-solid fa-paper-plane"></i>
+          <h4>Parcel Tracking Support</h4>
+          <div class="line-divider"></div>
+          <p>
+            Our operations are supported by real-time web and mobile tracking tools - so you always know where your package is
+          </p>
+        </div>
+        <div class="services-card">
+          <i class="fa-solid fa-earth-africa"></i>
+          <h4>Global Reach</h4>
+          <div class="line-divider"></div>
+          <p>
+            Quality Road Freight Services provider that abides to your precise shipping needs with reliable, time reducing and cost effective results.
+          </p>
+        </div>
+        <div class="services-card">
+          <i class="fa-solid fa-handshake"></i>
+          <h4>B2B Enterprises</h4>
+          <div class="line-divider"></div>
+          <p>
+            We provide customised solutions to serve your factory to retailer supply chain end-to-end using our integrated warehousing, technology capabilities and logistics network that improve reliability and reduce cost
+          </p>
+        </div>
+        <div class="services-card">
+          <i class="fa-solid fa-credit-card"></i>
+          <h4>D2C Brands</h4>
+          <div class="line-divider"></div>
+          <p>
+            We provide an integrated logistics solution built on Express Parcel, Cross Border, Warehousing, Freight and Software value added services that helps brands deliver faster and provide a superior experience 
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORAGE SECTION -->
+
+    <section class="storage-section">
+      <div class="storage-container">
+        <div class="storage-image-area">
+          <img src="{%static 'assets/images/h2-img-6.jpg' %}" alt="Storage Image" />
+        </div>
+        <div class="storage-text-area">
+          <h2 class="underline">Powerful AI for next-generation logistics solutions</h2>
+          <p class="sub-text">
+            A.I ehanced routes for optimized deliveries 
+          </p>
+          <ul class="storage-list">
+            <li>
+              <i class="fa-brands fa-dropbox"></i>
+              <p>
+                LoftyHeights leverages AI to provide routes that are the fastest and the most optimal. Our AI-powered route recommendations ensure that deliveries reach their destination with unmatched efficiency.
+              </p>
+            </li>
+            <li>
+              <i class="fa-brands fa-dropbox"></i>
+              <p>
+                LoftyHeights uses advanced AI function for a finely-tuned location approach to categorize orders with pinpoint precision. This targeted allocation eliminates the possibility of misrouted deliveries leading to an efficient and faster order fulfillment.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL SECTION -->
+
+    <section class="call-section">
+      <div class="call-section-text-content">
+        <i class="fa-solid fa-phone"></i>
+        <span class="underline">
+          <span class="call-text">Contact Us</span>
+          <span class="phoneNumber">loftyheightsshipments@post.com</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <section class="section-1">
+            <h2>LoftyHeights Shipments</h2>
+          </section>
+
+          <section class="section-2">
+            <h4>Othe Links</h4>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+              <li><a href="{% url 'aboutus' %}">About</a></li>
+              <li><a href="{% url 'signin' %}">Login</a></li>
+              <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+          </section>
+
+          <section class="section-3">
+            <h4>Get in Touch</h4>
+            <p><a href="mailto:company@email.com">loftyheightsshipments@post.com</a></p>
+          </section>
+        </div>
+
+        <hr class="divider" />
+        <div class="copyright">
+          <p>&copy; <span id="currentYear"></span> Lofty Heights Shipments</p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-to-top">
+      <i class="fas fa-angle-up"></i>
+    </button>
+
+    <script src="{%static 'assets/js/app.js' %}"></script>
+    <script>
+      const navbar = document.querySelector(".navbar"); // For sticky behavior
+
+      // Navigation bar sticky behavior
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+
+      // MENU HAMBURGER
+      const hamburger = document.querySelector(".hamburger");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        document.querySelector(".nav-links").classList.toggle("open");
+      });
+    </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/66658272981b6c56477b421b/1hvu8b3rb';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+    
+  </body>
+</html>
