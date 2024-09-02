@@ -96,9 +96,9 @@ WSGI_APPLICATION = 'courier_website.wsgi.application'
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
     'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://testuser_n6zt_user:jjQseWMc8r1LOiwGfvK58KmGwwb1Krp0@dpg-cqkcrn08fa8c73ckn8o0-a.oregon-postgres.render.com/testuser_n6zt',
-        conn_max_age=600
+        default='postgres://bbhkxiyk:5LlJFIHJRk6AM6o0tZ3tJnApKnJeXQLW@mouse.db.elephantsql.com/bbhkxiyk',
+        conn_max_age=60,  # Adjust as needed; this sets the connection to stay open for 60 seconds
+        ssl_require=True
     )
 }
 
